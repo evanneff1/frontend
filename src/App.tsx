@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import teamData from './CollegeBasketballTeams.json';
+
 import './App.css';
+
+const jsonTeam = teamData['teams'];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>College Basketball Team List</h1>
+      <h4>Here is a list of all college basketball teams in the NCAA</h4>
+
+      {jsonTeam.map((team) => (
+        <div className="card">
+          <h2>{team.school} University</h2>
+          <p>
+            Location: {team.city}, {team.state}
+          </p>
+          <p> School Mascot: {team.name}</p>
+        </div>
+      ))}
     </div>
   );
 }
